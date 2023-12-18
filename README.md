@@ -1,6 +1,6 @@
    # IMAGE STITCHING WITH OPENCV - C++
 
-## Summary
+## 1. Summary
 
 Sometimes we may have pieces of an image, how to make them a single image? Or when we take a panoramic image with our camera, how does this work? To answer these questions, first, we should understand the structure of an image. We also saw single pixel operations in the first homework, so we will deal with high-level image operations. In this homework, we will work with keypoints, features, and descriptors.
 
@@ -10,16 +10,16 @@ Ok, but how to get this feature from the image? There are two ways of getting fe
 
 
 
-## Introduction
+## 2. Introduction
 
 There are 15 datasets provided to us to work on. To work on those images OpenCV is a must-use, and C++ language is obligatory for us to use.
 
-### Requirements
+### 2.1. Requirements
 
 - OpenCV + OpenCV Contrib 4.6
 - ISO C++ Standard 17
 
-### Setting Up the Environment
+### 2.2. Setting Up the Environment
 
 After downloading the source codes of OpenCV and OpenCV Contrib and used CMake to build these libraries. Note that non-free and world options are to be activated after configuration. I used Microsoft Visual Studio Community 2022 (64-bit) – Current Version 17.2.3 with Nvidia 1050TI GPU and Intel 7700HQ CPU.
 
@@ -36,11 +36,11 @@ To use OpenCV, you need to edit your solution properties.
 |                                                     | opencv_world460.lib                   |
 |                                                     | opencv_world460d.lib                  |
 
-## 2.3. Setting Up the Project
+### 2.3. Setting Up the Project
 
 After downloading the project, there must be 3 folders.
 
-### 2.3.1. InputImages
+#### 2.3.1. InputImages
 
 This folder is the main folder for our datasets and input images. It has 18 sub-folders. 15 of them are provided by the professor. These are:
 
@@ -72,7 +72,7 @@ Places and sources of these images are:
 
 **Table II:** Information about single Images to split as Panoramic Blocks.
 
-### 2.3.2. Libraries
+#### 2.3.2. Libraries
 
 This folder contains necessary libraries. All libraries have “.h” extension. Name of files are:
 
@@ -85,7 +85,7 @@ This folder contains necessary libraries. All libraries have “.h” extension.
 - parallel.h
 - readImage.h
 - stitch.h
-### 2.3.3. OutputImages
+#### 2.3.3. OutputImages
 
 By default, this folder does not contain any sub-folders, but after running the program it will have folders with the same name as InputImages subfolders, which are shown in 1.3.1.
 
@@ -119,14 +119,13 @@ d. **Keypoint descriptor:** The local image gradients are measured at the select
 ![Picture1](./img/Picture1.png)
 **Figure I:** Schema for Feature Matching. source: [9]
 
-3.1. SIFT Flow Chart
--------------------
+### 3.1. SIFT Flow Chart
+
 ![Picture2](./img/Picture2.png)
 
-3.2. Program Runtime
---------------------
+### 3.2. Program Runtime
 
-### 3.2.1. Initializing the Program and Reading Image
+#### 3.2.1. Initializing the Program and Reading Image
 
 First, we build the application in Visual Studio, then Debug and Analyze. The user is greeted with a starting question: Would you like to continue with RGB Image or Grayscale Image? 1 is more Grayscale and 2 is for RGB reading option. This input is stored in the `int answerForRGBorGray` variable and refuses & retakes the input if it is not 1 or 2.
 
@@ -163,7 +162,7 @@ In the next question, the user chooses if they want to use a dataset provided by
 
 My house street and DEI building street images are taken from Google Maps. I also put an image from Istanbul. It takes the input to `int answerForDatasetOrImage` variable and refuses & retakes if not 1 or 2. If the first option is chosen:
 
-![Figure V](./img/Picture5.png)
+![Picture5](./img/Picture5.png)
 
 **Figure V:** Selecting the Dataset
 
@@ -176,13 +175,13 @@ function reads all the images in the first parameter; “InputImages/SRT1” pat
 
 If the second option is chosen:
 
-![Figure VI](./img/Picture6.png)
+![Picture6](./img/Picture6.png)
 
 **Figure VI:** Selection of a single image to split.
 
 The user enters a number between 1 and 3. `int answerforWhichImagetoParse` variable holds the answer. And according to it, `string subInputImageFolder` variable stores the name of selection.
 
-![Figure VII](./img/Picture7.png)
+![Picture7](./img/Picture7.png)
 
 **Figure VII:** Selection of number of pieces of the panoramic image.
 
