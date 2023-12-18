@@ -116,20 +116,20 @@ c. **Orientation assignment:** One or more orientations are assigned to each key
 d. **Keypoint descriptor:** The local image gradients are measured at the selected scale in the region around each keypoint. These are transformed into a representation that allows for significant levels of local shape distortion and change in illumination 
 
 
-![Picture1](./img/Picture1.png)
+![Picture1](./img/Picture1.png)  
 **Figure I:** Schema for Feature Matching. source: [9]
 
 ### 3.1. SIFT Flow Chart
 
-![Picture2](./img/Picture2.png)
-
+![Picture2](./img/Picture2.png)  
+**Figure II:** Flowchart of the SIFT. source: [10]
 ### 3.2. Program Runtime
 
 #### 3.2.1. Initializing the Program and Reading Image
 
 First, we build the application in Visual Studio, then Debug and Analyze. The user is greeted with a starting question: Would you like to continue with RGB Image or Grayscale Image? 1 is more Grayscale and 2 is for RGB reading option. This input is stored in the `int answerForRGBorGray` variable and refuses & retakes the input if it is not 1 or 2.
 
-![Picture3](./img/Picture3.jpg)
+![Picture3](./img/Picture3.jpg)  
 
 **Figure III:** The meeting screen. It asks the color selection, in other meaning the channel number.
 
@@ -156,13 +156,13 @@ The program uses `(answerForRGBorGray – 1)` as `imreadMode` flag to get GRAYSC
 
 In the next question, the user chooses if they want to use a dataset provided by the professor (see 2.3.1.) or a horizontal image I prepared for.
 
-![PictureIV](./img/Picture4.png)
+![PictureIV](./img/Picture4.png)  
 
 **Figure IV:** Selection of a stock dataset or creating user's own dataset.
 
 My house street and DEI building street images are taken from Google Maps. I also put an image from Istanbul. It takes the input to `int answerForDatasetOrImage` variable and refuses & retakes if not 1 or 2. If the first option is chosen:
 
-![Picture5](./img/Picture5.png)
+![Picture5](./img/Picture5.png)  
 
 **Figure V:** Selecting the Dataset
 
@@ -175,13 +175,13 @@ function reads all the images in the first parameter; “InputImages/SRT1” pat
 
 If the second option is chosen:
 
-![Picture6](./img/Picture6.png)
+![Picture6](./img/Picture6.png)  
 
 **Figure VI:** Selection of a single image to split.
 
 The user enters a number between 1 and 3. `int answerforWhichImagetoParse` variable holds the answer. And according to it, `string subInputImageFolder` variable stores the name of selection.
 
-![Picture7](./img/Picture7.png)
+![Picture7](./img/Picture7.png)  
 
 **Figure VII:** Selection of number of pieces of the panoramic image.
 
@@ -192,7 +192,7 @@ Since an image is chosen to split, now the user enters a number to decide the nu
 
 where `img` is the input image, `columnNumber` is the number of pieces and `blocks` are the vector of containing result blocks. To get an average calculation, 4 is chosen in this report.
 
-![Picture8](./img/Picture8.png)
+![Picture8](./img/Picture8.png)  
 
 **Figure VIII:** Selection of Transformation(s)
 
@@ -200,11 +200,11 @@ The user enters a string; the string is converted to uppercase and if the string
 
 After this step, `subInputImageFolder`, which is the input file name, is checked under `OutputImages`. If the folder exists, then all resistant files inside are cleaned; if not exist then created
 
-![Picture9](./img/Picture9.jpg)
+![Picture9](./img/Picture9.jpg)  
 
 **Figure IX:** Original image file. Taken from Google Maps and shows the UniPD DEI building
 
-![Picture10](./img/Picture10.jpg)
+![Picture10](./img/Picture10.jpg)  
 
 **Figure X:** Randomly Resized, Rotated and Noised Blocks
 
