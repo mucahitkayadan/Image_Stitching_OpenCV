@@ -6,9 +6,7 @@ Sometimes we may have pieces of an image, how to make them a single image? Or wh
 
 For this task, first, we need to understand what an Image Feature is and how we can use it. Image feature is a simple image pattern, based on which we can describe what we see on the image. For example, a cat's eye will be a feature on an image of a cat. The main role of features in computer vision (and not only) is to transform visual information into the vector space. This gives us the possibility to perform mathematical operations on them, for example finding a similar vector (which leads us to a similar image or object on the image).
 
-Ok, but how to get this feature from the image? There are two ways of getting features from the image, first is an image descriptor (white box algorithms), second is a neural net (black box algorithms). Today we will be working with the first one. There are many algorithms for feature extraction, most popular of them are SURF, ORB, SIFT, BRIEF. Most of these algorithms are based on image gradient. [1]
-
-
+Ok, but how to get this feature from the image? There are two ways of getting features from the image, first is an image descriptor (white box algorithms), second is a neural net (black box algorithms). Today we will be working with the first one. There are many algorithms for feature extraction, most popular of them are SURF, ORB, SIFT, BRIEF. Most of these algorithms are based on image gradient.[^1] 
 
 ## 2. Introduction
 
@@ -25,16 +23,13 @@ After downloading the source codes of OpenCV and OpenCV Contrib and used CMake t
 
 To use OpenCV, you need to edit your solution properties.
 
-| Name of Properties                                  | Path                                  |
-|-----------------------------------------------------|---------------------------------------|
-| Configuration Properties/Debugging/Environment      | opencv4\x64\vc17\bin;                 |
-| C/C++/General/Additional Include Libraries          | opencv4\include;                      |
-| C/C++/Language/C++ Language Standard                | ISO C++ 17 (/std:c++17)               |
-| Linker/General/Additional Library Directories       | opencv4\x64\vc17\lib                  |
-| Linker/Input/Additional Dependencies                | opencv_img_hash460.lib                |
-|                                                     | opencv_img_hash460d.lib               |
-|                                                     | opencv_world460.lib                   |
-|                                                     | opencv_world460d.lib                  |
+| Name of Properties                             | Path                                                                                                  |
+|------------------------------------------------|-------------------------------------------------------------------------------------------------------|
+| Configuration Properties/Debugging/Environment | opencv4\x64\vc17\bin;                                                                                 |
+| C/C++/General/Additional Include Libraries     | opencv4\include;                                                                                      |
+| C/C++/Language/C++ Language Standard           | ISO C++ 17 (/std:c++17)                                                                               |
+| Linker/General/Additional Library Directories  | opencv4\x64\vc17\lib                                                                                  |
+| Linker/Input/Additional Dependencies           | opencv_img_hash460.lib <br/>opencv_img_hash460d.lib <br/>opencv_world460.lib <br/>opencv_world460.lib |
 
 ### 2.3. Setting Up the Project
 
@@ -117,12 +112,12 @@ d. **Keypoint descriptor:** The local image gradients are measured at the select
 
 
 ![Picture1](./img/Picture1.png)  
-**Figure I:** Schema for Feature Matching. source: [9]
+**Figure I:** Schema for Feature Matching. source: [^9]
 
 ### 3.1. SIFT Flow Chart
 
 ![Picture2](./img/Picture2.png)  
-**Figure II:** Flowchart of the SIFT. source: [10]
+**Figure II:** Flowchart of the SIFT. source: [^10]
 ### 3.2. Program Runtime
 
 #### 3.2.1. Initializing the Program and Reading Image
@@ -133,7 +128,7 @@ First, we build the application in Visual Studio, then Debug and Analyze. The us
 
 **Figure III:** The meeting screen. It asks the color selection, in other meaning the channel number.
 
-OpenCV `imread` function has `imreadModes`, which are modes for how to read images. It is an enumeration, shortly: \[11\]
+OpenCV `imread` function has `imreadModes`, which are modes for how to read images. It is an enumeration, shortly: \[^11\]
 
     enum cv::ImreadModes {
       cv::IMREAD_UNCHANGED = -1,
@@ -230,3 +225,74 @@ takes the image as input and resizes it randomly, between (0.5, 1.5) rate.
 
 takes the image as input and adds noise.
 
+#### 3.2.2. Feature Detection and Matching
+
+In this part, the program detects keypoints and features with SIFT, matches them with knnMatch. If the x point of distance is closer than the y point by ratio (0.75 in the program), then the match is saved as a good match.  
+To track the keypoints and good matches, I used cv::drawMatches function and saved them as images. Here are steps of SR1 dataset:
+
+![Picture13](./img/Picture13.jpg)  
+***Figure XII:** Batches Between the Main Image and 2. Image*  
+
+![Picture14](./img/Picture14.jpg)  
+***Figure XIII:** Batches Between the Main Image and 3. Image*  
+
+![Picture15](./img/Picture15.jpg) 
+***Figure XIV:** Batches Between the Main Image and 4. Image*  
+
+![Picture16](./img/Picture16.jpg) 
+***Figure XV:** Batches Between the Main Image and 5. Image*
+
+![Picture17](./img/Picture17.jpg)    
+***Figure XVI:** Batches Between the Main Image and 6. Image*  
+
+![Picture18](./img/Picture18.jpg)    
+***Figure XVII:** Batches Between the Main Image and 7. Image*  
+
+![Picture19](./img/Picture19.jpg)    
+***Figure XVIII:** Batches Between the Main Image and 8. Image*  
+
+![Picture20](./img/Picture20.jpg)   
+***Figure XIX:** Batches Between the Main Image and 9. Image*  
+
+#### 3.2.3. Stitching and Projecting the Image
+
+In case of stitching only 2 images together to create a panorama, we didn’t face any difficulty, and it was a straightforward process. But in case of stitching many images together, we see that as we stitch more and more images, images near to the side start getting distorted as shown.
+
+![Picture21](./img/Picture21.jpg)  
+
+***Figure XX:** Side image is distorted in a panoramic image stitching.*  
+
+This distortion is happening only with 4 images(2nd image is also distorted), just wonder what will happen when we stitch 8 images for this panorama. The method explained involves the projection of the images onto a cylinder, unrolling them, and then stitching them together. However, depending on the input and required output, you can even project the images onto a sphere instead of a cylinder. I have in this project only projected the image onto the cylinder. 
+
+## 4.	RESULTS
+All dataset and images are calculated by this method and they all work fine. Some outputs are shown below:
+
+![Picture22](./img/Picture22.jpg)   
+***Figure XXIII:** The Result of DEI*  
+
+![Picture23](./img/Picture23.jpg)   
+***Figure XXIV:** The Result of SRT1*  
+
+![Picture24](./img/Picture24.jpg) 
+***Figure XXV:** The Result of RT2*   
+
+![Picture25](./img/Picture25.jpg)  
+***Figure XXVI:** The Result of LNSRT3*  
+
+## 5.	CONCLUSION
+This project aimed to understand image feature detection and feature matching problems. In the end of the project, I learned how to extract features and patching images.   
+The datasets with number 2, which include Porta Portello are harder than 1 and 3. It is because they have lower number of matches.  
+In future steps, I would like to add detector options like ORB etc. Thus, the user could choose what detector to use.
+
+## 6.	SOURCES
+[^1]: Feature extraction and similar image search with OpenCV for newbies | by Andrey Nikishaev | Machine Learning World | Medium  
+[^2]: OpenCV: Harris Corner Detection  
+[^3]: OpenCV: Shi-Tomasi Corner Detector & Good Features to Track  
+[^4]: OpenCV: Introduction to SIFT (Scale-Invariant Feature Transform)  
+[^5]: OpenCV: Introduction to SURF (Sped-Up Robust Features)  
+[^6]: OpenCV: FAST Algorithm for Corner Detection  
+[^7]: OpenCV: BRIEF (Binary Robust Independent Elementary Features)  
+[^8]: OpenCV: ORB (Oriented FAST and Rotated BRIEF)  
+[^9]: David G. Lowe, Distinctive Image Features from Scale-Invariant Keypoints, International Journal of Computer Vision, January 5, 2004  
+[^10]: Raghu, K. An Approach to Parallelization of SIFT Algorithm on GPUs for Real-Time Applications,  Journal of Computer and Communications  
+[^11]: OpenCV: Flags used for image file reading and writing  
