@@ -2,11 +2,11 @@
 
 ## 1. Summary
 
-Sometimes we may have pieces of an image, how to make them a single image? Or when we take a panoramic image with our camera, how does this work? To answer these questions, first, we should understand the structure of an image. We also saw single pixel operations in the first homework, so we will deal with high-level image operations. In this homework, we will work with keypoints, features, and descriptors.
+Sometimes we may have pieces of an image, how to make them a single image? Or when we take a panoramic image with our camera, how does this work? To answer these questions, first, we should understand the structure of an image. We also saw single-pixel operations in the first homework so we will deal with high-level image operations. In this homework, we will work with keypoints, features, and descriptors.
 
-For this task, first, we need to understand what an Image Feature is and how we can use it. Image feature is a simple image pattern, based on which we can describe what we see on the image. For example, a cat's eye will be a feature on an image of a cat. The main role of features in computer vision (and not only) is to transform visual information into the vector space. This gives us the possibility to perform mathematical operations on them, for example finding a similar vector (which leads us to a similar image or object on the image).
+For this task, first, we need to understand what an Image Feature is and how we can use it. Image feature is a simple image pattern, based on which we can describe what we see in the image. For example, a cat's eye will be a feature on an image of a cat. The main role of features in computer vision (and not only) is to transform visual information into vector space. This gives us the possibility to perform mathematical operations on them, for example finding a similar vector (which leads us to a similar image or object on the image).
 
-Ok, but how to get this feature from the image? There are two ways of getting features from the image, first is an image descriptor (white box algorithms), second is a neural net (black box algorithms). Today we will be working with the first one. There are many algorithms for feature extraction, most popular of them are SURF, ORB, SIFT, BRIEF. Most of these algorithms are based on image gradient.[^1] 
+Ok, but how do I get this feature from the image? There are two ways of getting features from the image, first is an image descriptor (white box algorithms), second is a neural net (black box algorithms). Today we will be working with the first one. There are many algorithms for feature extraction, the most popular of them are SURF, ORB, SIFT, and BRIEF. Most of these algorithms are based on image gradients.[^1] 
 
 ## 2. Introduction
 
@@ -126,7 +126,7 @@ First, we build the application in Visual Studio, then Debug and Analyze. The us
 
 ![Picture3](./img/Picture3.jpg)  
 
-***Figure III:** The meeting screen. It asks the color selection, in other meaning the channel number.*  
+***Figure III:** The meeting screen. It asks for the color selection, in other meaning the channel number.*  
 
 OpenCV `imread` function has `imreadModes`, which are modes for how to read images. It is an enumeration, shortly: \[^4\]
 
@@ -147,26 +147,26 @@ OpenCV `imread` function has `imreadModes`, which are modes for how to read imag
     }
     
 
-The program uses `(answerForRGBorGray – 1)` as `imreadMode` flag to get GRAYSCALE and COLOR modes in order. If the user chooses grayscale image type, then it will be returned to 3 channel images again, because of the cylindrical presentation. COLOR image is chosen to continue.
+The program uses `(answerForRGBorGray – 1)` as the `imreadMode` flag to get GRAYSCALE and COLOR modes in order. If the user chooses grayscale image type, then it will be returned to 3 channel images again, because of the cylindrical presentation. COLOR image is chosen to continue.
 
-In the next question, the user chooses if they want to use a dataset provided by the professor (see 2.3.1.) or a horizontal image I prepared for.
+In the next question, the user chooses if they want to use a dataset provided by the professor (see 2.3.1.) or a horizontal image prepared by me.
 
 ![PictureIV](./img/Picture4.png)  
 
-***Figure IV:** Selection of a stock dataset or creating user's own dataset.*  
+***Figure IV:** Selection of a stock dataset or creating user's dataset.*  
 
-My house street and DEI building street images are taken from Google Maps. I also put an image from Istanbul. It takes the input to `int answerForDatasetOrImage` variable and refuses & retakes if not 1 or 2. If the first option is chosen:
+My house street and DEI building street images are taken from Google Maps. I also put an image from Istanbul. It takes the input to the `int answerForDatasetOrImage` variable and refuses & retakes if not 1 or 2. If the first option is chosen:
 
 ![Picture5](./img/Picture5.png)  
 
 ***Figure V:** Selecting the Dataset*  
 
-File names and their corresponding transformations are already discussed in the chapter 2.3.1. For this step, let us choose an average hardness dataset, for example 7: SRT1, string `subInputImageFolder` variable stores the name of selection.
+File names and their corresponding transformations are already discussed in chapter 2.3.1. For this step, let us choose an average hardness dataset, for example, 7: SRT1, the string `subInputImageFolder` variable stores the name of the selection.
 
     int readImage(std::string, std::vector&, int)
     
 
-function reads all the images in the first parameter; “InputImages/SRT1” path and sets the `Mat` vector in the second parameter. 3rd parameter is reading grayscale or colorful. All the images are stored in `vector Images` variable.
+the function reads all the images in the first parameter; the “InputImages/SRT1” path and sets the `Mat` vector in the second parameter. 3rd parameter is reading grayscale or colorful. All the images are stored in the `vector Images` variable.
 
 If the second option is chosen:
 
@@ -174,18 +174,18 @@ If the second option is chosen:
 
 ***Figure VI:** Selection of a single image to split.*  
 
-The user enters a number between 1 and 3. `int answerforWhichImagetoParse` variable holds the answer. And according to it, `string subInputImageFolder` variable stores the name of selection.
+The user enters a number between 1 and 3. The `int answerforWhichImagetoParse` variable holds the answer. And according to it, the `string subInputImageFolder` variable stores the name of selection.
 
 ![Picture7](./img/Picture7.png)  
 
-***Figure VII:** Selection of number of pieces of the panoramic image.*  
+***Figure VII:** Selection of a number of pieces of the panoramic image.*  
 
-Since an image is chosen to split, now the user enters a number to decide the number of pieces to divide. Minimum number is 2, I set the maximum number as 6, because of the images are not that wide. The image will be divided as panoramic, not mosaic. When splitting, there is 50 pixels overlap between images.
+Since an image is chosen to split, now the user enters a number to decide the number of pieces to divide. The minimum number is 2, I set the maximum number as 6, because of the images are not that wide. The image will be divided as panoramic, not mosaic. When splitting, there is 50 pixels overlap between images.
 
     int divideImage(const cv::Mat& img, const int columnNumber, std::vector& blocks)
     
 
-where `img` is the input image, `columnNumber` is the number of pieces and `blocks` are the vector of containing result blocks. To get an average calculation, 4 is chosen in this report.
+where `img` is the input image, `columnNumber` is the number of pieces, and `blocks` are the vector containing result blocks. To get an average calculation, 4 is chosen in this report.
 
 ![Picture8](./img/Picture8.png)  
 
@@ -203,7 +203,7 @@ After this step, `subInputImageFolder`, which is the input file name, is checked
 
 ***Figure X:** Randomly Resized, Rotated and Noised Blocks*  
 
-I declared 2 functions for rotating. One is with cropping frame and the second one is without cropping.
+I declared 2 functions for rotating. One is with a cropping frame and the second one is without cropping.
 
     cv::Mat rotate(cv::Mat inputImage)
     
@@ -218,7 +218,7 @@ takes the image as input and rotates randomly between (-10, 10) degrees.
     cv::Mat scale(cv::Mat inputImage)
     
 
-takes the image as input and resizes it randomly, between (0.5, 1.5) rate.
+takes the image as input and resizes it randomly, between (0.5, 1.5) rates.
 
     cv::Mat AddGaussianNoise(cv::Mat inputImage)
     
@@ -227,8 +227,8 @@ takes the image as input and adds noise.
 
 #### 3.2.2. Feature Detection and Matching
 
-In this part, the program detects keypoints and features with SIFT, matches them with knnMatch. If the x point of distance is closer than the y point by ratio (0.75 in the program), then the match is saved as a good match.  
-To track the keypoints and good matches, I used cv::drawMatches function and saved them as images. Here are steps of SR1 dataset:
+In this part, the program detects keypoints and features with SIFT, matches them with knnMatch. If the x point of distance is closer than the y point by the ratio (0.75 in the program), then the match is saved as a good match.  
+To track the keypoints and good matches, I used cv::drawMatches function and saved them as images. Here are the steps of the SR1 dataset:
 
 ![Picture13](./img/Picture13.jpg)  
 ***Figure XII:** Batches Between the Main Image and 2. Image*  
@@ -256,7 +256,7 @@ To track the keypoints and good matches, I used cv::drawMatches function and sav
 
 #### 3.2.3. Stitching and Projecting the Image
 
-In case of stitching only 2 images together to create a panorama, we didn’t face any difficulty, and it was a straightforward process. But in case of stitching many images together, we see that as we stitch more and more images, images near to the side start getting distorted as shown.
+In case of stitching only 2 images together to create a panorama, we didn’t face any difficulty, and it was a straightforward process. But in the case of stitching many images together, we see that as we stitch more and more images, images near the side start getting distorted as shown.
 
 ![Picture21](./img/Picture21.jpg)  
 
@@ -281,8 +281,8 @@ All dataset and images are calculated by this method and they all work fine. Som
 
 ## 5.	CONCLUSION  
 This project aimed to understand image feature detection and feature matching problems. In the end of the project, I learned how to extract features and patching images.   
-The datasets with number 2, which include Porta Portello are harder than 1 and 3. It is because they have lower number of matches.  
-In future steps, I would like to add detector options like ORB etc. Thus, the user could choose what detector to use.
+The datasets with number 2, which include Porta Portello are harder than 1 and 3. It is because they have a lower number of matches.  
+In future steps, I would like to add detector options like ORB, etc. Thus, the user could choose what detector to use.
 
 ## 6. SOURCES
 
