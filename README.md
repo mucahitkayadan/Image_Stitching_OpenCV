@@ -197,7 +197,7 @@ After this step, `subInputImageFolder`, which is the input file name, is checked
 
 ![Picture9](./img/Picture9.jpg)  
 
-**Figure IX:** Original image file. Taken from Google Maps and shows the UniPD DEI building
+***Figure IX:** Original image file. Taken from Google Maps and shows the UniPD DEI building*  
 
 ![Picture10](./img/Picture10.jpg)  
 
@@ -288,11 +288,11 @@ In future steps, I would like to add detector options like ORB etc. Thus, the us
 [^1]: Feature extraction and similar image search with OpenCV for newbies | by Andrey Nikishaev | Machine Learning World | Medium  
 [^2]: OpenCV: Harris Corner Detection  
 [^3]: OpenCV: Shi-Tomasi Corner Detector & Good Features to Track  
-[^4]: OpenCV: Introduction to SIFT (Scale-Invariant Feature Transform)  
-[^5]: OpenCV: Introduction to SURF (Sped-Up Robust Features)  
-[^6]: OpenCV: FAST Algorithm for Corner Detection  
-[^7]: OpenCV: BRIEF (Binary Robust Independent Elementary Features)  
-[^8]: OpenCV: ORB (Oriented FAST and Rotated BRIEF)  
-[^9]: David G. Lowe, Distinctive Image Features from Scale-Invariant Keypoints, International Journal of Computer Vision, January 5, 2004  
-[^10]: Raghu, K. An Approach to Parallelization of SIFT Algorithm on GPUs for Real-Time Applications,  Journal of Computer and Communications  
-[^11]: OpenCV: Flags used for image file reading and writing  
+[4] OpenCV: Introduction to SIFT (Scale-Invariant Feature Transform)  
+[5] OpenCV: Introduction to SURF (Sped-Up Robust Features)  
+[6] OpenCV: FAST Algorithm for Corner Detection  
+[7] OpenCV: BRIEF (Binary Robust Independent Elementary Features)  
+[8] OpenCV: ORB (Oriented FAST and Rotated BRIEF)  
+[9] David G. Lowe, Distinctive Image Features from Scale-Invariant Keypoints, International Journal of Computer Vision, January 5, 2004  
+[10] Raghu, K. An Approach to Parallelization of SIFT Algorithm on GPUs for Real-Time Applications,  Journal of Computer and Communications  
+[11] OpenCV: Flags used for image file reading and writing  
