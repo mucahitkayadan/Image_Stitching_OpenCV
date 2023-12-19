@@ -279,20 +279,22 @@ All dataset and images are calculated by this method and they all work fine. Som
 ![Picture25](./img/Picture25.jpg)  
 ***Figure XXVI:** The Result of LNSRT3*  
 
-## 5.	CONCLUSION
+## 5.	CONCLUSION  
 This project aimed to understand image feature detection and feature matching problems. In the end of the project, I learned how to extract features and patching images.   
 The datasets with number 2, which include Porta Portello are harder than 1 and 3. It is because they have lower number of matches.  
 In future steps, I would like to add detector options like ORB etc. Thus, the user could choose what detector to use.
 
-## 6.	SOURCES
+## 6. SOURCES
+
 [^1]: Feature extraction and similar image search with OpenCV for newbies | by Andrey Nikishaev | Machine Learning World | Medium  
-[^2]: OpenCV: Harris Corner Detection  
-[^3]: OpenCV: Shi-Tomasi Corner Detector & Good Features to Track  
-[4] OpenCV: Introduction to SIFT (Scale-Invariant Feature Transform)  
-[5] OpenCV: Introduction to SURF (Sped-Up Robust Features)  
-[6] OpenCV: FAST Algorithm for Corner Detection  
-[7] OpenCV: BRIEF (Binary Robust Independent Elementary Features)  
-[8] OpenCV: ORB (Oriented FAST and Rotated BRIEF)  
+[^2]: [OpenCV: Harris Corner Detection](https://docs.opencv.org/2.4/modules/imgproc/doc/feature_detection.html?highlight=harris#cv2.cornerHarris)  
+[^3]: [OpenCV: Shi-Tomasi Corner Detector & Good Features to Track](https://docs.opencv.org/2.4/modules/imgproc/doc/feature_detection.html?highlight=goodfeaturestotrack#cv2.goodFeaturesToTrack)  
+[4] [OpenCV: Introduction to SIFT (Scale-Invariant Feature Transform)](https://docs.opencv.org/2.4/modules/nonfree/doc/feature_detection.html?highlight=sift#cv2.SIFT)  
+[5] [OpenCV: Introduction to SURF (Speeded-Up Robust Features)](https://docs.opencv.org/2.4/modules/nonfree/doc/feature_detection.html?highlight=surf#cv2.SURF)  
+[6] [OpenCV: FAST Algorithm for Corner Detection](https://docs.opencv.org/2.4/modules/features2d/doc/common_interfaces_of_feature_detectors.html?highlight=fast#cv2.FastFeatureDetector)  
+[7] [OpenCV: BRIEF (Binary Robust Independent Elementary Features)](https://docs.opencv.org/2.4/modules/features2d/doc/common_interfaces_of_descriptor_matchers.html?highlight=brief#cv2.DescriptorMatcher_create)  
+[8] [OpenCV: ORB (Oriented FAST and Rotated BRIEF)](https://docs.opencv.org/2.4/modules/features2d/doc/common_interfaces_of_feature_detectors.html?highlight=orb#cv2.ORB)  
 [9] David G. Lowe, Distinctive Image Features from Scale-Invariant Keypoints, International Journal of Computer Vision, January 5, 2004  
-[10] Raghu, K. An Approach to Parallelization of SIFT Algorithm on GPUs for Real-Time Applications,  Journal of Computer and Communications  
-[11] OpenCV: Flags used for image file reading and writing  
+[10] Raghu, K. An Approach to Parallelization of SIFT Algorithm on GPUs for Real-Time Applications, Journal of Computer and Communications  
+[11] [OpenCV: Flags used for image file reading and writing](https://docs.opencv.org/master/d4/da8/group__imgcodecs.html#ga61d9b0126a3e57d9277ac48327799c80)  
+
