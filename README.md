@@ -62,8 +62,8 @@ Places and sources of these images are:
 | Folder Name | Place                    | Source      |
 |-------------|--------------------------|-------------|
 | DEI         | 6 Via Giovanni Gradenigo | Google Maps |
-| MYHOUSE     | 1 Via Riccardo Gigante   | Google Maps |
-| ISTANBUL    | Eminonu-Istanbul         | Canva       |
+| MYHOUSE     | Padova                   | Google Maps |
+| ISTANBUL    | Eminonu - Istanbul       | Canva       |
 
 ***Table II:** Information about single Images to split as Panoramic Blocks.*  
 
