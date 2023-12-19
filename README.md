@@ -51,7 +51,7 @@ Each letter corresponds to a transformation.
 | N      | Noise                         |
 | L      | Illumination Change           |
 
-**Table I:** Correspondence Letters for Transformations.
+***Table I:** Correspondence Letters for Transformations.*  
 
 3 folders are extra, and they are created by me. They all consist of an image named “Image.jpg”.
 
@@ -65,7 +65,7 @@ Places and sources of these images are:
 | MYHOUSE     | 1 Via Riccardo Gigante   | Google Maps |
 | ISTANBUL    | Eminonu-Istanbul         | Canva       |
 
-**Table II:** Information about single Images to split as Panoramic Blocks.
+***Table II:** Information about single Images to split as Panoramic Blocks.*  
 
 #### 2.3.2. Libraries
 
@@ -112,12 +112,12 @@ d. **Keypoint descriptor:** The local image gradients are measured at the select
 
 
 ![Picture1](./img/Picture1.png)  
-**Figure I:** Schema for Feature Matching. source: [^9]
+***Figure I:** Schema for Feature Matching. source: [^9]*  
 
 ### 3.1. SIFT Flow Chart
 
 ![Picture2](./img/Picture2.png)  
-**Figure II:** Flowchart of the SIFT. source: [^10]
+***Figure II:** Flowchart of the SIFT. source: [^10]*  
 ### 3.2. Program Runtime
 
 #### 3.2.1. Initializing the Program and Reading Image
@@ -126,7 +126,7 @@ First, we build the application in Visual Studio, then Debug and Analyze. The us
 
 ![Picture3](./img/Picture3.jpg)  
 
-**Figure III:** The meeting screen. It asks the color selection, in other meaning the channel number.
+***Figure III:** The meeting screen. It asks the color selection, in other meaning the channel number.*  
 
 OpenCV `imread` function has `imreadModes`, which are modes for how to read images. It is an enumeration, shortly: \[^11\]
 
@@ -153,13 +153,13 @@ In the next question, the user chooses if they want to use a dataset provided by
 
 ![PictureIV](./img/Picture4.png)  
 
-**Figure IV:** Selection of a stock dataset or creating user's own dataset.
+***Figure IV:** Selection of a stock dataset or creating user's own dataset.*  
 
 My house street and DEI building street images are taken from Google Maps. I also put an image from Istanbul. It takes the input to `int answerForDatasetOrImage` variable and refuses & retakes if not 1 or 2. If the first option is chosen:
 
 ![Picture5](./img/Picture5.png)  
 
-**Figure V:** Selecting the Dataset
+***Figure V:** Selecting the Dataset*  
 
 File names and their corresponding transformations are already discussed in the chapter 2.3.1. For this step, let us choose an average hardness dataset, for example 7: SRT1, string `subInputImageFolder` variable stores the name of selection.
 
@@ -172,13 +172,13 @@ If the second option is chosen:
 
 ![Picture6](./img/Picture6.png)  
 
-**Figure VI:** Selection of a single image to split.
+***Figure VI:** Selection of a single image to split.*  
 
 The user enters a number between 1 and 3. `int answerforWhichImagetoParse` variable holds the answer. And according to it, `string subInputImageFolder` variable stores the name of selection.
 
 ![Picture7](./img/Picture7.png)  
 
-**Figure VII:** Selection of number of pieces of the panoramic image.
+***Figure VII:** Selection of number of pieces of the panoramic image.*  
 
 Since an image is chosen to split, now the user enters a number to decide the number of pieces to divide. Minimum number is 2, I set the maximum number as 6, because of the images are not that wide. The image will be divided as panoramic, not mosaic. When splitting, there is 50 pixels overlap between images.
 
@@ -189,7 +189,7 @@ where `img` is the input image, `columnNumber` is the number of pieces and `bloc
 
 ![Picture8](./img/Picture8.png)  
 
-**Figure VIII:** Selection of Transformation(s)
+***Figure VIII:** Selection of Transformation(s)*  
 
 The user enters a string; the string is converted to uppercase and if the string contains R, N, or S or more of them, the transformation is applied according to their matches. Table I shows these letters and their corresponding operations. RSN input is entered in this example.
 
@@ -201,7 +201,7 @@ After this step, `subInputImageFolder`, which is the input file name, is checked
 
 ![Picture10](./img/Picture10.jpg)  
 
-**Figure X:** Randomly Resized, Rotated and Noised Blocks
+***Figure X:** Randomly Resized, Rotated and Noised Blocks*  
 
 I declared 2 functions for rotating. One is with cropping frame and the second one is without cropping.
 
